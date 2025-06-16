@@ -9,11 +9,6 @@ export const routes: Routes = [
         component: About,
     },
     {
-        path:'',
-        title:'Home Page',
-        component: About,
-    },
-    {
         path:'projects',
         title:'My Projects',
         component: Projects,
