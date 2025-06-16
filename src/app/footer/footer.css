@@ -1,8 +1,9 @@
-footer { 
+.app-footer { 
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
+    width: 100%;
     min-width: 300px;
+    min-height: 50px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -13,26 +14,26 @@ footer {
     margin-bottom: 3%;
 }
 @media screen and (max-width: 400px) {
-    footer {
+    .app-footer {
         width: 80%;
         flex-direction: column;
         gap: 20px;
     }
 }
 
-footer a {
+.app-footer a {
     text-decoration: none;
     color: inherit;
     display: flex;
     align-items: center;
 }
 
-footer a .icon {
+.app-footer a .icon {
     font-size: 0.9em;
     margin-right:0em;
 }
 
-footer a span {
+.app-footer a span {
     color: gray;
     margin-left:0em;
 }
