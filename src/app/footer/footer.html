@@ -1,21 +1,22 @@
-<div class="app-footer">
-    <a href="about.html">
-    <span class="icon">🤠</span>
-    <span>about</span>
-    </a>
+@if(isNotHomePage()){
+        <nav class="app-footer" >
+        <a routerLink="/">
+            <span class="icon">🏠</span>
+            <span>Home</span>
+        </a>
+        <a routerLink="/about">
+            <span class="icon">🐐</span>
+            <span>About</span>
+        </a>
 
-    <a href="index.html">
-        <span class="icon">🏠</span>
-        <span>home</span>
-    </a>
+        <a routerLink="/projects">
+            <span class="icon">🛠️</span>
+            <span>projects</span>
+        </a>
 
-    <a href="projects.html">
-        <span class="icon">🛠️</span>
-        <span>projects</span>
-    </a>
-
-    <a href="#">
-        <span class="icon">🗿</span>
-        <span>philosophy</span>
-    </a>
-</div>
+        <a href="#">
+            <span class="icon">🗿</span>
+            <span>philosophy</span>
+        </a>
+    </nav>
+}
