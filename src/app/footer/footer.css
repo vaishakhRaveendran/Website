@@ -1,0 +1,38 @@
+footer { 
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    min-width: 300px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 45px;
+    font-size: 1.8rem;
+    margin-top: auto;
+    margin-bottom: 3%;
+}
+@media screen and (max-width: 400px) {
+    footer {
+        width: 80%;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+footer a .icon {
+    font-size: 0.9em;
+    margin-right:0em;
+}
+
+footer a span {
+    color: gray;
+    margin-left:0em;
+}

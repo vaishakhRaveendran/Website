@@ -1,0 +1,7 @@
+app-root{
+    background-color:#01000c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
