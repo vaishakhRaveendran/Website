@@ -1,0 +1,28 @@
+<div class="app-projects">
+  <h1 id="Header">🛠️ My Builds 🛠️</h1>
+  <div class="app-container">
+    @for(project of ProjectsArray; track project.projectName) {
+      <div class="project">
+        <img src={{project.image}} alt="Code Editor Extension">
+        <div class="project-content">
+          <h3 class="project-title">{{project.projectName}}</h3>
+          <div class="project-tags">
+            @for(tag of project.tags; track $index) {
+              <span class="tag">{{tag}}</span>
+            }
+          </div>
+          <!-- <p class="project-description">
+            {{project.description}}
+          </p> -->
+          <!-- <div class="project-links">
+            @for(link of getProjectLinks(project.links); track $index) {
+              <a [href]="link.url" class="project-link" target="_blank">
+                {{link.name}}
+              </a>
+            }
+          </div> -->
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,199 @@
+.app-projects{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+#Header{
+    font-weight: 800;
+    color:aliceblue;
+    font-family:'futura';
+
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    flex: 1;
+    width: 85%;
+    column-gap: 20px;
+    row-gap:20px;
+    justify-items: center;
+}
+
+.project {
+    width: clamp(250px, 95%, 300px);
+    aspect-ratio: 3/5;
+    background-color: white;
+    border: 1px solid #e8eaed;
+    border-radius: 16px;
+    overflow-y:hidden ;
+    overflow-x:hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.project:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+}
+
+.project img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.project:hover img {
+    transform: scale(1.02);
+}
+
+.project-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 24px 20px;
+    background: linear-gradient(135deg, #fafbfc 0%, #ffffff 100%);
+    position: relative;
+}
+
+.project-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.project-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 8px 0 0 0;
+    text-align: center;
+    line-height: 1.3;
+    position: relative;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 4px 0;
+}
+
+.tag {
+    background: linear-gradient(135deg, #f7f8fc, #eef1f5);
+    color: #4a5568;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.tag:hover::before {
+    left: 100%;
+}
+
+.tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.project-description {
+    color: #4a5568;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: center;
+    flex-grow: 1;
+    margin: 8px 0;
+    padding: 0 4px;
+    position: relative;
+}
+
+.project-links {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+    align-items: center;
+    width: 100%;
+}
+
+.project-link {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.project-link:hover::before {
+    left: 100%;
+}
+
+.github-link {
+    background: linear-gradient(135deg, #24292f, #1c2128);
+    color: white;
+    border-color: #24292f;
+}
+
+.github-link:hover {
+    background: linear-gradient(135deg, #1c2128, #161b22);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(36, 41, 47, 0.3);
+}
+
+.website-link {
+    background: linear-gradient(135deg, #ffffff, #f8f9ff);
+    color: #1a73e8;
+    border-color: #1a73e8;
+}
+
+.website-link:hover {
+    background: linear-gradient(135deg, #f8f9ff, #e8f0fe);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+}
+
