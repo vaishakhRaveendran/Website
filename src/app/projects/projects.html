@@ -1,8 +1,8 @@
 <div class="app-projects">
   <h1 id="Header">🛠️ My Builds 🛠️</h1>
   <div class="app-container">
-    @for(project of ProjectsArray; track project.projectName) {
-      <div class="project">
+    @for(project of ProjectsArray; track project.id) {
+      <a class="project" [routerLink]="['/projects', project.id]">
         <img src={{project.image}} alt="Code Editor Extension">
         <div class="project-content">
           <h3 class="project-title">{{project.projectName}}</h3>
@@ -11,18 +11,10 @@
               <span class="tag">{{tag}}</span>
             }
           </div>
-          <!-- <p class="project-description">
-            {{project.description}}
-          </p> -->
-          <!-- <div class="project-links">
-            @for(link of getProjectLinks(project.links); track $index) {
-              <a [href]="link.url" class="project-link" target="_blank">
-                {{link.name}}
-              </a>
-            }
-          </div> -->
         </div>
-      </div>
+      </a>
     }
   </div>
 </div>
+
+<!-- <app-project-card [project]="project"></app-project-card> -->
