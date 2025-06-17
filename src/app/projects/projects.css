@@ -1,8 +1,10 @@
 .app-projects{
     display:flex;
+    width:75vw;
     flex-direction: column;
     align-items: center;
     font-family: monospace;
+   
 
 }
 #Header{
@@ -15,16 +17,16 @@
 
 .app-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     flex: 1;
-    width: 85%;
+    width: 100%;
     column-gap: 20px;
     row-gap:20px;
     justify-items: center;
 }
 
 .project {
-    width: clamp(250px, 95%, 300px);
+    width: clamp(280px, 95%, 300px);
     aspect-ratio: 3/5;
     background-color: white;
     border: 1px solid #e8eaed;
@@ -33,6 +35,7 @@
     overflow-x:hidden;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .project:hover {
@@ -199,3 +202,20 @@
     box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
 }
 
+.more-button{
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin:10px;
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}

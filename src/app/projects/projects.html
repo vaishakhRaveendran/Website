@@ -4,9 +4,12 @@
 />
 <div class="app-projects">
   <h1 class="animate__animated animate__bounce" id="Header">🛠️ My Builds 🛠️</h1>
+  @if(isOwner){
+    <button class="more-button btn-secondary"type="button" (click)="addNewProject()">More</button>
+  }
   <div class="app-container">
-    @for(project of ProjectsArray; track project.projectName) {
-      <div class="project">
+    @for(project of ProjectsArray; track project.id) {
+      <a class="project" [routerLink]="['/projects', project.id]">
         <img src={{project.image}} alt="Code Editor Extension">
         <div class="project-content">
           <h3 class="project-title">{{project.projectName}}</h3>
@@ -15,18 +18,8 @@
               <span class="tag">{{tag}}</span>
             }
           </div>
-          <!-- <p class="project-description">
-            {{project.description}}
-          </p> -->
-          <!-- <div class="project-links">
-            @for(link of getProjectLinks(project.links); track $index) {
-              <a [href]="link.url" class="project-link" target="_blank">
-                {{link.name}}
-              </a>
-            }
-          </div> -->
         </div>
-      </div>
+      </a>
     }
   </div>
 </div>
