@@ -1,0 +1,92 @@
+<div class="add-project-container">
+  <h1>One More🦆</h1>
+  
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="project-form">
+    
+    <!-- Project Name -->
+    <div class="form-group">
+      <label for="projectName">Project Name *</label>
+      <input 
+        type="text" 
+        id="projectName"
+        formControlName="projectName"
+        placeholder="Enter project name"
+        class="form-control">
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea 
+        id="description"
+        formControlName="description"
+        placeholder="Describe your project..."
+        rows="4"
+        class="form-control"></textarea>
+    </div>
+
+    <!-- Image URL -->
+    <div class="form-group">
+      <label for="image">Project Image URL</label>
+      <input 
+        type="url" 
+        id="image"
+        formControlName="image"
+        placeholder="https://example.com/image.jpg"
+        class="form-control">
+    </div>
+
+    <!-- Tags -->
+    <div class="form-group">
+      <label for="tags">Tags</label>
+      <input 
+        type="text" 
+        id="tags"
+        formControlName="tags"
+        placeholder="React, TypeScript, Node.js (comma or space separated)"
+        class="form-control">
+      <small class="form-text">Enter tags separated by commas or spaces</small>
+    </div>
+
+    <!-- Links Section -->
+    <div class="links-section" formGroupName="links">
+      <h3>Project Links</h3>
+      
+      <!-- GitHub Link -->
+      <div class="form-group">
+        <label for="github">GitHub Repository</label>
+        <input 
+          type="url" 
+          id="github"
+          formControlName="github"
+          placeholder="https://github.com/username/repository"
+          class="form-control">
+      </div>
+
+      <!-- Website Link -->
+      <div class="form-group">
+        <label for="website">Live Website</label>
+        <input 
+          type="url" 
+          id="website"
+          formControlName="website"
+          placeholder="https://your-project-website.com"
+          class="form-control">
+      </div>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="form-actions">
+      <button type="submit" [disabled]="projectForm.invalid" class="btn btn-primary">
+        Add Project
+      </button>
+       <button type="button" (click)="onSave()" class="btn btn-secondary">
+        Save
+      </button>
+      <button type="button" (click)="onReset()" class="btn btn-secondary">
+        Reset
+      </button>
+    </div>
+
+  </form>
+</div>
