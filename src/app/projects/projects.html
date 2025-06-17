@@ -1,5 +1,8 @@
 <div class="app-projects">
   <h1 id="Header">🛠️ My Builds 🛠️</h1>
+  @if(isOwner){
+    <button class="more-button btn-secondary"type="button" (click)="addNewProject()">More</button>
+  }
   <div class="app-container">
     @for(project of ProjectsArray; track project.id) {
       <a class="project" [routerLink]="['/projects', project.id]">
@@ -16,5 +19,3 @@
     }
   </div>
 </div>
-
-<!-- <app-project-card [project]="project"></app-project-card> -->

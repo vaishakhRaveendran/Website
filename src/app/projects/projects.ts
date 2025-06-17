@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { ProjectCard } from '../project-card/project-card';
-import { RouterLink } from '@angular/router';
+import { RouterLink ,Router} from '@angular/router';
 import { ProjectData,IProject } from '../project-data';
 
 @Component({
@@ -12,11 +11,13 @@ import { ProjectData,IProject } from '../project-data';
 
 export class Projects{
   ProjectsArray: IProject[] = [];
-  constructor(private projectData:ProjectData){}
+  isOwner:boolean=true;
+  constructor(private projectData:ProjectData,private router:Router){}
   ngOnInit(){
     this.ProjectsArray = this.projectData.getAllProjects();
   }
-  
-
+  addNewProject(){
+    this.router.navigate(['/add']);
+  }
 }
 

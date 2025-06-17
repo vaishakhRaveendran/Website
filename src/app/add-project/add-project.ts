@@ -39,6 +39,6 @@ export class AddProject {
     if(!this.projectForm.dirty||this.saved){
       return true;
     }
-    else return confirm("You have unsaved Changes.Click yes to proceed");
+    else return confirm("You have unsaved Changes. Click ok to proceed");
   }
 }
