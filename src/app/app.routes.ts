@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { About } from './about/about';
 import { Projects } from './projects/projects';
 import { ProjectCard } from './project-card/project-card';
+import { AddProject } from './add-project/add-project';
 
 export const routes: Routes = [
     {
@@ -23,5 +24,10 @@ export const routes: Routes = [
         path:'projects/:id',
         title:'Blurts',
         component: ProjectCard,
+    },
+    {
+        path:'add',
+        title:'More Blurts',
+        component: AddProject,
     },
 ];
