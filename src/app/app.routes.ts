@@ -3,6 +3,7 @@ import { About } from './about/about';
 import { Projects } from './projects/projects';
 import { ProjectCard } from './project-card/project-card';
 import { AddProject } from './add-project/add-project';
+import { navAuthGuard } from './nav-auth-guard';
 
 export const routes: Routes = [
     {
@@ -29,5 +30,6 @@ export const routes: Routes = [
         path:'add',
         title:'More Blurts',
         component: AddProject,
+        canDeactivate:[navAuthGuard]
     },
 ];
