@@ -1,12 +1,33 @@
 <div class="app-project-card">
-  <p class="project-description">
-    {{ project?.description }}
-  </p>
-  <div class="project-links">
-    @for (link of getProjectLinks(project?.links); track $index) {
-      <a [href]="link.url" class="project-link" target="_blank">
-        {{ link.name }}
-      </a>
+  <div class="project-card">
+  <div class="project-header">
+    <h2 class="project-title">{{ project?.projectName }}</h2>
+    <div class="project-tags">
+      @for (tag of project?.tags; track $index) {
+        <span class="project-tag">{{ tag }}</span>
+      }
+    </div>
+  </div>
+  
+  <div class="project-content">
+    @if (project?.image) {
+      <div class="project-image-container">
+        <img [src]="project?.image" alt="{{ project?.projectName }}" class="project-image" />
+      </div>
     }
+    <div class="project-details">
+      <p class="project-description">
+        {{ project?.description }}
+      </p>
+      <div class="project-links">
+        @for (link of getProjectLinks(project?.links); track $index) {
+          <a [href]="link.url" class="project-link" target="_blank">
+            <span class="link-icon">{{ getLinkIcon(link.name) }}</span>
+            <span class="link-text">{{ link.name }}</span>
+          </a>
+        }
+      </div>
+    </div>
+    </div>
   </div>
 </div>

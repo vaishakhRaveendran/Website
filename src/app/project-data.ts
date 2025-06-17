@@ -85,11 +85,11 @@ export class ProjectData {
       return this.projectData.find(project => project.id === id);
     }
 }
-export interface IProject {
-  id:number,
-  projectName: string;
-  description: string;
-  image: string;
-  tags: string[];
-  links: { [key: string]: string };
-}
+  export interface IProject {
+    id:number,
+    projectName: string;
+    description: string;
+    image: string;
+    tags: string[];
+    links: { [key: string]: string };
+  }

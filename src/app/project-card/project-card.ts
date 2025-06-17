@@ -17,11 +17,23 @@ export class ProjectCard {
       console.log(this.project?.description);
    }}
 
-   getProjectLinks(links: { [key: string]: string } | undefined) {
+    // In your component.ts
+  getLinkIcon(linkName: string): string {
+    const iconMap: {[key: string]: string} = {
+      'github': '⌘',
+      'demo': '↗',
+      'website': '🌐',
+      'documentation': '📄',
+      'playstore': '⏵',
+      'appstore': ''
+    };
+    
+    const lowerName = linkName.toLowerCase();
+    return iconMap[lowerName] || '↗';
+  }
+
+  getProjectLinks(links: { [key: string]: string } | undefined): {name: string, url: string}[] {
     if (!links) return [];
-    return Object.entries(links).map(([key, value]) => ({
-      name: key.charAt(0).toUpperCase() + key.slice(1),
-      url: value
-    }));
+    return Object.keys(links).map(name => ({ name, url: links[name] }));
   }
 }

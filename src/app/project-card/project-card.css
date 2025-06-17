@@ -1,9 +1,125 @@
-.app-project-card{
-    margin-top:40vh;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: monospace;
-    min-height:300px;
-    background-color: green;
+.app-project-card {
+  min-width: 30vw;
+  width: 70%;
+  margin: 2rem auto;
+}
+
+.project-card {
+  font-family: 'Courier New', Courier, monospace;
+  border: 1px solid rgba(131, 127, 127, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(3, 23, 57, 0.7);
+  color: #e0e0e0;
+}   
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.project-header {
+  padding: 1.5rem 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.project-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #64ffda;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  justify-content: center;
+}
+
+.project-tag {
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #64ffda;
+  border: 1px solid rgba(100, 255, 218, 0.3);
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.project-image-container {
+  width: 100%;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 90%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  border-radius: 4px;
+  margin: 1rem auto;
+}
+
+.project-image:hover {
+  transform: scale(1.02);
+}
+
+.project-details {
+  padding: 1.5rem;
+}
+
+.project-description {
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.project-link {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid #64ffda;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #64ffda;
+  transition: all 0.2s ease;
+}
+
+.project-link:hover {
+  background-color: rgba(100, 255, 218, 0.2);
+  transform: translateY(-1px);
+}
+
+.link-icon {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+.link-text {
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-project-card {
+    width: 90%;
+  }
 }
