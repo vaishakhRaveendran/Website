@@ -1,12 +1,4 @@
 import { Component } from '@angular/core';
-interface Project {
-  projectName: string;
-  description: string;
-  image: string;
-  tags: string[];
-  links: { [key: string]: string };
-}
-
 
 @Component({
   selector: 'app-projects',
@@ -16,7 +8,7 @@ interface Project {
 
 export class Projects{
   
-  ProjectsArray: Project[] = [
+  ProjectsArray: IProject[] = [
     {
       projectName: "E-Commerce Website",
       description: "A full-stack e-commerce platform built with Angular and Node.js featuring user authentication, product catalog, shopping cart, and payment integration.",
@@ -88,4 +80,11 @@ export class Projects{
       url: value
     }));
   }
+}
+export interface IProject {
+  projectName: string;
+  description: string;
+  image: string;
+  tags: string[];
+  links: { [key: string]: string };
 }
