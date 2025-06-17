@@ -1,0 +1,13 @@
+
+<div style="background-color: green;">
+  <p class="project-description">
+    {{ project()?.description }}
+  </p>
+  <div class="project-links">
+    @for (link of getProjectLinks(project()?.links); track $index) {
+      <a [href]="link.url" class="project-link" target="_blank">
+        {{ link.name }}
+      </a>
+    }
+  </div>
+</div>
