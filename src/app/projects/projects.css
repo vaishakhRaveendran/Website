@@ -201,3 +201,20 @@
     box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
 }
 
+.more-button{
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin:10px;
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
