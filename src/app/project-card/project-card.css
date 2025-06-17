@@ -1,0 +1,9 @@
+.app-project-card{
+    margin-top:40vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: monospace;
+    min-height:300px;
+    background-color: green;
+}
