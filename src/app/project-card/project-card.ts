@@ -1,9 +1,10 @@
 import { Component,input } from '@angular/core';
 import { IProject,ProjectData } from '../project-data';
 import {ActivatedRoute} from '@angular/router';
+import { Fetchdb } from '../fetchdb/fetchdb';
 @Component({
   selector: 'app-project-card',
-  imports: [],
+  imports: [Fetchdb],
   templateUrl: './project-card.html',
   styleUrl: './project-card.css'
 })
