@@ -11,8 +11,9 @@ import { Fetchdb } from '../fetchdb/fetchdb';
 export class ProjectCard {
    project : IProject|undefined;
    constructor(private projectData:ProjectData, private router: ActivatedRoute,){}
+   
    ngOnInit(){
-    const routeParam = parseInt(this.router.snapshot.paramMap.get('id')??'0');
+    const routeParam = this.router.snapshot.paramMap.get('id')??'0';
     if (routeParam) {
       this.project = this.projectData.getProjectById(routeParam);
       console.log(this.project?.description);
