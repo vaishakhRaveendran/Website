@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,signal } from '@angular/core';
 import { RouterLink ,Router} from '@angular/router';
 import { ProjectData,IProject } from '../project-data';
 
@@ -10,7 +10,7 @@ import { ProjectData,IProject } from '../project-data';
 })
 
 export class Projects{
-  ProjectsArray: IProject[] = [];
+  ProjectsArray = signal<IProject[]>([]);
   isOwner:boolean=true;
   constructor(private projectData:ProjectData,private router:Router){}
   ngOnInit(){

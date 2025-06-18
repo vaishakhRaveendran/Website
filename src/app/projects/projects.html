@@ -8,7 +8,7 @@
     <button class="more-button btn-secondary"type="button" (click)="addNewProject()">More</button>
   }
   <div class="app-container">
-    @for(project of ProjectsArray; track project.id) {
+    @for(project of ProjectsArray(); track project.id) {
       <a class="project" [routerLink]="['/projects', project.id]">
         <img src={{project.image}} alt="Code Editor Extension">
         <div class="project-content">
