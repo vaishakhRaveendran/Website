@@ -4,6 +4,7 @@ import { Projects } from './projects/projects';
 import { ProjectCard } from './project-card/project-card';
 import { AddProject } from './add-project/add-project';
 import { navAuthGuard } from './nav-auth-guard';
+import { Philosophy } from './philosophy/philosophy';
 
 export const routes: Routes = [
     {
@@ -18,8 +19,8 @@ export const routes: Routes = [
     },
     {
         path:'philosophy',
-        title:'Blurts',
-        component: About,
+        title:'I do More',
+        component: Philosophy,
     },
     {
         path:'projects/:id',
