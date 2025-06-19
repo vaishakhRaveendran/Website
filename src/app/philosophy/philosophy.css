@@ -1,0 +1,61 @@
+.book-list {
+  width:80%;
+  height:70%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+/* Normal state */
+.book-card {
+  background: red;
+  cursor: pointer;
+  transition: 0.3s;
+  width:clamp(250px,350px);
+  max-height: 300px;
+}
+
+/* When ANY book is selected, deactivate ALL cards */
+.book-card.deactive {
+  display:none;
+  pointer-events: none; /* Prevent clicks */
+}
+
+.image{
+    width:100%;
+    object-fit: cover;
+    height:70%;
+}
+
+/* Popup overlay */
+.book-popup {
+  position: fixed;
+  margin:20px auto;
+  width: 350px;
+  height:350px;
+  background: rgba(218, 17, 17, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+image{
+    width:
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}

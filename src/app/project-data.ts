@@ -42,7 +42,10 @@ export class ProjectData{
   getProjectById(id: string): IProject | undefined {
     return this.projectData().find(project => project.id === id);
   }
+
 }
+
+
 export interface IProject {
     id:string,
     projectName: string;
@@ -51,3 +54,4 @@ export interface IProject {
     tags: string[];
     links: { [key: string]: string };
 }
+
