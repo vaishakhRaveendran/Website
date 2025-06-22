@@ -1,24 +1,26 @@
+<h1>Talk Over☕</h1>
 <div class="book-list">
   @for (book of BooksArray(); track book.id) {
     <div class="book-card" (click)="selectBook(book)" [class.deactive]="selectedBook">
-      <img  class="image" [src]="book.image" alt="{{book.bookName}}">
+      <img class="image" [src]="book.image" alt="{{book.bookName}}">
       <div class="book-info">
         <h3>{{book.bookName}}</h3>
-        <p class="author">by {{book.authorName}}</p>
+        <p class="author">✒️{{book.authorName}}</p>
       </div>
     </div>
+  }
 
-    @if (selectedBook) {
-      <div class="book-popup" (click)="deselectBook()">
-        <div class="popup-content">
-            <img class="popup-cover" [src]="selectedBook.image" alt="{{selectedBook.bookName}} cover">
-            <div class="popup-details">
-            <h2>{{selectedBook.bookName}}</h2>
-            <p class="author">by {{selectedBook.authorName}}</p>
-            <p class="description">{{selectedBook.description}}</p>
-            </div>
+  @if (selectedBook) {
+    <div class="book-popup">
+      <button class="popup-close" (click)="selectedBook = null">×</button>
+      <div class="popup-content">
+        <img class="popup-cover" [src]="selectedBook.image" alt="{{selectedBook.bookName}} cover">
+        <div class="popup-details">
+          <h2>{{selectedBook.bookName}}</h2>
+          <p class="author">✒️{{selectedBook.authorName}}</p>
+          <p class="description">{{selectedBook.description}}</p>
         </div>
       </div>
-    }
+    </div>
   }
 </div>

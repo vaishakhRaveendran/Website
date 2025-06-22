@@ -1,61 +1,163 @@
+h1 {
+  color: #f0f0f0;               /* Soft white for readability */
+  font-family: monospace;
+  font-weight: 600;             /* Semi-bold */
+  font-size: 2.5rem;            /* Large but not overwhelming */
+  text-align: center;           /* Centered alignment */
+  margin: 2rem 0 1.5rem;        /* Ample vertical spacing */
+  padding-bottom: 1rem;         /* Space for underline */
+  letter-spacing: -0.5px;       /* Slightly tighter letter spacing */
+  line-height: 1.2;             /* Optimal line spacing */
+  
+  /* Subtle gradient underline */
+  background-image: linear-gradient(90deg, rgba(218,17,17,0.8), rgba(218,17,17,0.4));
+  background-repeat: no-repeat;
+  background-size: 50% 3px;     /* Half-width underline */
+  background-position: center bottom;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    margin: 1.5rem 0 1rem;
+  }
+}
+/* ===== Base Styles ===== */
 .book-list {
-  width:80%;
-  height:70%;
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
 }
 
-/* Normal state */
+/* ===== Book Card ===== */
 .book-card {
-  background: red;
+  background: #ffffff0d; /* Semi-transparent white */
+  backdrop-filter: blur(4px); /* Frosted glass effect */
+  border: 1px solid #ffffff1a; /* Subtle border */
+  border-radius: 12px;
+  width: 100%;
+  height: 380px;
   cursor: pointer;
-  transition: 0.3s;
-  width:clamp(250px,350px);
-  max-height: 300px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* When ANY book is selected, deactivate ALL cards */
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  background: #ffffff1a; /* Slightly brighter on hover */
+}
+
 .book-card.deactive {
-  display:none;
-  pointer-events: none; /* Prevent clicks */
+  opacity: 0.4;
+  filter: grayscale(60%) blur(1px);
+  pointer-events: none;
 }
 
-.image{
-    width:100%;
-    object-fit: cover;
-    height:70%;
+/* ===== Image ===== */
+.image {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  border-bottom: 1px solid #ffffff1a;
 }
 
-/* Popup overlay */
+/* ===== Book Info ===== */
+.book-info {
+  padding: 1.2rem;
+  color: #f0f0f0; /* Soft white text */
+}
+
+.book-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-info .author {
+  margin: 0.3rem 0 0;
+  font-size: 0.9rem;
+  color: #aaaaaa; /* Light gray */
+  font-style: italic;
+}
+
+/* ===== Popup ===== */
 .book-popup {
   position: fixed;
-  margin:20px auto;
-  width: 350px;
-  height:350px;
-  background: rgba(218, 17, 17, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  max-width: 500px;
+  background: #1a1a2e; /* Dark blue-gray */
+  border-radius: 16px;
   z-index: 1000;
-}
-image{
-    width:
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 1px solid #ffffff1a;
+  overflow: hidden;
 }
 
 .popup-content {
-  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   padding: 2rem;
-  max-width: 600px;
-  border-radius: 8px;
 }
 
-.close-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
+.popup-cover {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #ffffff1a;
+}
+
+.popup-details {
+  color: #f0f0f0;
+}
+
+.popup-details h2 {
+  margin: 0 0 0.5rem;
   font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.popup-details .author {
+  color: #aaaaaa;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.popup-details .description {
+  line-height: 1.6;
+  color: #cccccc;
+  font-size: 0.95rem;
+}
+
+/* ===== Close Button (Optional) ===== */
+.popup-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #ffffff1a;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: #f0f0f0;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.popup-close:hover {
+  background: #ffffff33;
 }
