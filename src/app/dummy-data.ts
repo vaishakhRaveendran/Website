@@ -58,6 +58,15 @@ export const DUMMY_BOOKS: IBook[] = [
     description:
       'A history of the republic from 1947 onward — partition, the states reorganisation, the Emergency, and the long argument over what the country was supposed to be.',
     image: 'https://picsum.photos/seed/india-after-gandhi/400/600'
+  },
+  {
+    id: 'dummy-book-7',
+    bookName: 'Les Misérables',
+    authorName: 'Victor Hugo',
+    note: 'Jean Valjean, an escaped convict, becomes the mayor of a town and the guardian of a young girl.',
+    description:
+      'Set in France during the early nineteenth century, the film tells the story of Jean Valjean who, while being hunted for decades by the ruthless policeman Javert after breaking parole, agrees to care for a factory worker\'s daughter. The story reaches resolution against the background of the June Rebellion of 1832.',
+    image: 'https://picsum.photos/200/300/?blur'
   }
 ];
 
