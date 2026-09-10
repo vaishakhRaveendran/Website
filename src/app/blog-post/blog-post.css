@@ -1,6 +1,6 @@
 .back-link {
   display: inline-block;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
   font-family: var(--font-sans);
   font-size: var(--step--1);
   color: var(--ink-faint);
@@ -12,11 +12,21 @@
   color: var(--ink);
 }
 
-.project-detail .page-title {
-  margin-bottom: var(--space-4);
+.post-head {
+  margin-bottom: var(--space-5);
 }
 
-.detail-figure {
+.post-date {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.post-figure {
   margin: 0 0 var(--space-5);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
@@ -24,28 +34,21 @@
   background: var(--paper-sunken);
 }
 
-.detail-figure img {
+.post-figure img {
   width: 100%;
   aspect-ratio: 16 / 9;
-  /* Capped so a wide hero image does not push the page past the fold. */
   max-height: 38vh;
   object-fit: cover;
   /* Keeps the palette monochrome — remove for full-colour imagery. */
   filter: grayscale(1);
 }
 
-.detail-body {
-  font-size: var(--step-1);
-  line-height: 1.7;
+.post-body {
+  font-size: var(--step-0);
+  line-height: 1.75;
   color: var(--ink-muted);
 }
 
-.detail-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-}
-
-.detail-links .btn {
-  text-transform: capitalize;
+.post-body p:first-child {
+  color: var(--ink);
 }

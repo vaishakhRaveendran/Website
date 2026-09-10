@@ -1,26 +1,28 @@
-<h1>Talk Over☕</h1>
-<div class="book-list">
-  @for (book of BooksArray(); track book.id) {
-    <div class="book-card" (click)="selectBook(book)" [class.deactive]="selectedBook">
-      <img class="image" [src]="book.image" alt="{{book.bookName}}">
-      <div class="book-info">
-        <h3>{{book.bookName}}</h3>
-        <p class="author">✒️{{book.authorName}}</p>
-      </div>
+<div class="page reading">
+
+  <header class="page-head" reveal>
+    <p class="eyebrow">Reading</p>
+    <h1 class="page-title">Talk it over.</h1>
+    <p class="page-lede">
+      Books I keep returning to. Pick one and I will happily lose an evening to it.
+    </p>
+  </header>
+
+  <hr class="divider">
+
+  @if (BooksArray().length) {
+    <div class="entry-list" reveal>
+      @for (book of BooksArray(); track book.id) {
+        <a class="entry-row" [routerLink]="['/philosophy', book.id]">
+          <span class="entry-body">
+            <span class="entry-title">{{ book.bookName }}</span>
+            <span class="entry-note"><span class="book-author">{{ book.authorName }}</span>{{ book.note ? ' — ' + book.note : '' }}</span>
+          </span>
+        </a>
+      }
     </div>
+  } @else {
+    <p class="empty">The shelf is empty for now.</p>
   }
 
-  @if (selectedBook) {
-    <div class="book-popup">
-      <button class="popup-close" (click)="selectedBook = null">×</button>
-      <div class="popup-content">
-        <img class="popup-cover" [src]="selectedBook.image" alt="{{selectedBook.bookName}} cover">
-        <div class="popup-details">
-          <h2>{{selectedBook.bookName}}</h2>
-          <p class="author">✒️{{selectedBook.authorName}}</p>
-          <p class="description">{{selectedBook.description}}</p>
-        </div>
-      </div>
-    </div>
-  }
 </div>

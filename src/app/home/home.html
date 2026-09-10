@@ -1,0 +1,27 @@
+<div class="page home">
+
+  <!-- Placeholder copy — edit freely. -->
+  <header class="home-hero" reveal>
+    <p class="eyebrow">Vaishakh Raveendran</p>
+    <h1 class="home-title">A quiet corner of the web for code, books, and long arguments.</h1>
+    <div class="prose home-intro">
+      <p>
+        I write software for a living. Away from the editor I read, argue, and lift — and this
+        is where those notes end up, unpolished and in no particular hurry.
+      </p>
+    </div>
+    <p class="home-topics">Literature &middot; Politics &middot; Books &middot; Gym</p>
+  </header>
+
+  <hr class="divider">
+
+  <nav class="home-index" reveal aria-label="Sections">
+    @for (section of sections; track section.path) {
+      <a class="index-row" [routerLink]="section.path">
+        <span class="index-label">{{ section.label }}</span>
+        <span class="index-note">{{ section.note }}</span>
+      </a>
+    }
+  </nav>
+
+</div>

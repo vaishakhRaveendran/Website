@@ -1,0 +1,29 @@
+<div class="page writing">
+
+  <header class="page-head" reveal>
+    <p class="eyebrow">Writing</p>
+    <h1 class="page-title">Things I have written.</h1>
+    <p class="page-lede">
+      Notes on software, books, and whatever I have been arguing about lately.
+    </p>
+  </header>
+
+  <hr class="divider">
+
+  @if (BlogsArray().length) {
+    <div class="entry-list" reveal>
+      @for (blog of BlogsArray(); track blog.id) {
+        <a class="entry-row has-lead" [routerLink]="['/blogs', blog.id]">
+          <time class="entry-lead" [attr.datetime]="blog.date">{{ blog.date | date:'d MMM y' }}</time>
+          <span class="entry-body">
+            <span class="entry-title">{{ blog.title }}</span>
+            <span class="entry-note">{{ blog.excerpt }}</span>
+          </span>
+        </a>
+      }
+    </div>
+  } @else {
+    <p class="empty">Nothing written up yet.</p>
+  }
+
+</div>

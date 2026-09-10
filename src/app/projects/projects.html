@@ -1,25 +1,30 @@
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
-<div class="app-projects">
-  <h1 class="animate__animated animate__bounce" id="Header">🛠️ My Builds 🛠️</h1>
-  @if(isOwner){
-    <button class="more-button btn-secondary"type="button" (click)="addNewProject()">More</button>
-  }
-  <div class="app-container">
-    @for(project of ProjectsArray(); track project.id) {
-      <a class="project" [routerLink]="['/projects', project.id]">
-        <img src={{project.image}} alt="Code Editor Extension">
-        <div class="project-content">
-          <h3 class="project-title">{{project.projectName}}</h3>
-          <div class="project-tags">
-            @for(tag of project.tags; track $index) {
-              <span class="tag">{{tag}}</span>
+<div class="page work">
+
+  <header class="page-head" reveal>
+    <p class="eyebrow">Work</p>
+    <h1 class="page-title">Things I have built.</h1>
+    <p class="page-lede">
+      Side work, small tools, and the occasional experiment that outgrew its afternoon.
+    </p>
+  </header>
+
+  <hr class="divider">
+
+  @if (ProjectsArray().length) {
+    <div class="entry-list" reveal>
+      @for (project of ProjectsArray(); track project.id) {
+        <a class="entry-row" [routerLink]="['/projects', project.id]">
+          <span class="entry-body">
+            <span class="entry-title">{{ project.projectName }}</span>
+            @if (project.description) {
+              <span class="entry-note">{{ project.description }}</span>
             }
-          </div>
-        </div>
-      </a>
-    }
-  </div>
+          </span>
+        </a>
+      }
+    </div>
+  } @else {
+    <p class="empty">No projects yet.</p>
+  }
+
 </div>

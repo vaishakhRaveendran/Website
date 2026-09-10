@@ -1,6 +1,7 @@
 import { Injectable, signal} from '@angular/core';
 import { collection, getDocs } from '@angular/fire/firestore';
 import { db } from '../firebase';
+import { USE_DUMMY_DATA, DUMMY_PROJECTS } from './dummy-data';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,11 @@ export class ProjectData{
   private projectData = signal<IProject[]>([]);
 
   constructor() {
-    this.fetchdb();
+    if (USE_DUMMY_DATA) {
+      this.projectData.set(DUMMY_PROJECTS);
+    } else {
+      this.fetchdb();
+    }
   }
 
   async fetchdb(): Promise<void> {

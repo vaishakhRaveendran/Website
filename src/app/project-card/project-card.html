@@ -1,34 +1,44 @@
-<div class="app-project-card">
-  <div class="project-card">
-  <div class="project-header">
-    <h2 class="project-title">{{ project?.projectName }}</h2>
-    <div class="project-tags">
-      @for (tag of project?.tags; track $index) {
-        <span class="project-tag">{{ tag }}</span>
-      }
-    </div>
-  </div>
-  
-  <div class="project-content">
-    @if (project?.image) {
-      <div class="project-image-container">
-        <img [src]="project?.image" alt="{{ project?.projectName }}" class="project-image" />
-      </div>
-    }
-    <div class="project-details">
-      <p class="project-description">
-        {{ project?.description }}
-      </p>
-      <div class="project-links">
-        @for (link of getProjectLinks(project?.links); track $index) {
-          <a [href]="link.url" class="project-link" target="_blank">
-            <span class="link-icon">{{ getLinkIcon(link.name) }}</span>
-            <span class="link-text">{{ link.name }}</span>
-          </a>
+<div class="page project-detail">
+
+  @if (project) {
+    <article reveal>
+      <header class="page-head">
+        <a class="back-link" routerLink="/projects">Back to projects</a>
+        <h1 class="page-title">{{ project.projectName }}</h1>
+        @if (project.tags && project.tags.length) {
+          <div class="tags">
+            @for (tag of project.tags; track $index) {
+              <span class="tag">{{ tag }}</span>
+            }
+          </div>
         }
+      </header>
+
+      @if (project.image) {
+        <figure class="detail-figure">
+          <img [src]="project.image" [alt]="project.projectName">
+        </figure>
+      }
+
+      <div class="prose detail-body">
+        <p>{{ project.description }}</p>
       </div>
+
+      @if (getProjectLinks(project.links).length) {
+        <hr class="divider">
+        <div class="detail-links">
+          @for (link of getProjectLinks(project.links); track $index) {
+            <a class="btn" [href]="link.url" target="_blank" rel="noopener noreferrer">{{ link.name }}</a>
+          }
+        </div>
+      }
+    </article>
+  } @else {
+    <div class="page-head">
+      <h1 class="page-title">Not found.</h1>
+      <p class="page-lede">That project does not exist, or has not been written up yet.</p>
     </div>
-    </div>
-  </div>
-  <app-fetchdb></app-fetchdb>
+    <a class="btn" routerLink="/projects">Back to projects</a>
+  }
+
 </div>

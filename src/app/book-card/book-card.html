@@ -1,0 +1,29 @@
+<div class="page book-detail">
+
+  @if (book) {
+    <article reveal>
+      <a class="back-link" routerLink="/philosophy">Back to reading</a>
+
+      <div class="book-layout">
+        <figure class="book-figure">
+          <img [src]="book.image" [alt]="book.bookName">
+        </figure>
+
+        <div class="book-text">
+          <h1 class="page-title">{{ book.bookName }}</h1>
+          <p class="book-author">{{ book.authorName }}</p>
+          <div class="prose book-body">
+            <p>{{ book.description }}</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  } @else {
+    <div class="page-head">
+      <h1 class="page-title">Not found.</h1>
+      <p class="page-lede">That book is not on the shelf.</p>
+    </div>
+    <a class="btn" routerLink="/philosophy">Back to reading</a>
+  }
+
+</div>
