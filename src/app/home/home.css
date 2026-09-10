@@ -1,5 +1,64 @@
 .home {
+  position: relative;
   padding-top: var(--space-7);
+}
+
+/* Content sits above the illustration. */
+.home > *:not(.home-art) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Margin illustration ----------
+   Starts in the empty left margin and runs under the left edge of the text
+   column. Fixed, so it stays in view as the page scrolls. The artwork itself
+   handles light/dark (see the style block inside public/portrait.svg).
+   Centring uses margin-top rather than a transform, leaving transform free
+   for the reveal directive's fade-in. */
+.home-art {
+  /* How far the artwork reaches past the column's left edge, into the text. */
+  --art-overlap: 8rem;
+  /* Grows to 38rem, but never wider than the space to the left of its own
+     right edge, nor taller than the viewport. The artwork carries about 17%
+     of empty canvas down its left side, so it is allowed to run 3rem off the
+     left edge of the screen: that trims blank space, not drawing. */
+  --art-size: min(
+    38rem,
+    calc(50vw - var(--content) / 2 + var(--art-overlap) + 3rem),
+    calc(100dvh - 6rem)
+  );
+
+  position: fixed;
+  z-index: 0;
+  top: 50%;
+  right: calc(50% + var(--content) / 2 - var(--art-overlap));
+  width: var(--art-size);
+  height: var(--art-size);
+  /* Half the artwork, then half the fixed footer, so it reads as centred in
+     the space actually available rather than in the raw viewport. */
+  margin-top: calc(var(--art-size) / -2 - var(--footer-h) / 2);
+  pointer-events: none;
+
+  /* Held well back, since the text now crosses it. */
+  opacity: 0.36;
+  /* And faded out along the right edge, which is the only part that actually
+     sits under the copy — so the drawing stays crisp out in the margin and
+     thins to nothing behind the words. */
+  -webkit-mask-image: linear-gradient(to right, #000 58%, transparent 96%);
+  mask-image: linear-gradient(to right, #000 58%, transparent 96%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .home-art {
+    opacity: 0.42;
+  }
+}
+
+/* Below this the drawing would be more behind the text than beside it. */
+@media (max-width: 70rem) {
+  .home-art {
+    display: none;
+  }
 }
 
 /* The title runs the full column width — capping it left the right-hand half
