@@ -1,43 +1,39 @@
 import { Injectable, signal } from '@angular/core';
-import { collection, getDocs } from '@angular/fire/firestore';
-import { db } from '../firebase';
-import { USE_DUMMY_DATA, DUMMY_BOOKS } from './dummy-data';
+import { Query } from 'appwrite';
+import { tablesDB, APPWRITE_DATABASE_ID, TABLES } from '../appwrite';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookData {
 
-   private bookData = signal<IBook[]>([]);
+  private bookData = signal<IBook[]>([]);
+
   constructor() {
-    if (USE_DUMMY_DATA) {
-      this.bookData.set(DUMMY_BOOKS);
-    } else {
-      this.fetchdb();
-    }
+    this.fetchdb();
   }
   /////////////////////////////////////////////////////////////////////////
   async fetchdb(): Promise<void> {
-  try {
-    const projectsCol = collection(db, 'books');
-    const projectSnapshot = await getDocs(projectsCol);
-    const bookArray= projectSnapshot.docs.map(doc => {
-      const data = doc.data();
-      return {
-        id: doc.id,
-        authorName: data['authorName'],
-        description: data['description'],
-        image: data['image'],
-        bookName:data['bookName'],
-        note: data['note']
-      };
-    });
-    this.bookData.set(bookArray);
+    try {
+      const { rows } = await tablesDB.listRows({
+        databaseId: APPWRITE_DATABASE_ID,
+        tableId: TABLES.books,
+        queries: [Query.limit(100)],
+      });
+      const bookArray = rows.map(row => ({
+        id: row.$id,
+        authorName: row['authorName'],
+        description: row['description'],
+        image: row['image'],
+        bookName: row['bookName'],
+        note: row['note']
+      }));
+      this.bookData.set(bookArray);
     } catch (error) {
       console.error('Error fetching book data:', error);
     }
   }
-  
+
   getAllBooks(){
     return this.bookData;
   }

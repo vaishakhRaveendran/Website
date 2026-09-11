@@ -2,6 +2,65 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
 
+## Content backend (Appwrite)
+
+Books, projects and blog posts are read from [Appwrite](https://appwrite.io) at
+runtime. Before the site will show anything, fill in the placeholders at the top
+of [`src/appwrite.ts`](src/appwrite.ts):
+
+- `APPWRITE_ENDPOINT` — your region's Cloud endpoint, e.g. `https://fra.cloud.appwrite.io/v1`
+- `APPWRITE_PROJECT_ID` — from Appwrite console → project settings
+- `APPWRITE_DATABASE_ID` — the database holding the three tables below
+
+These values are public by design (the web SDK runs in the browser); access is
+controlled by table permissions, not by hiding them. Add your site's domain
+under **project settings → platforms → Web** so the SDK is allowed to call the
+API, and grant **Read** to the **Any** role on each table so visitors can load
+content without signing in.
+
+### Tables
+
+Create a database with three tables — `books`, `projects`, `blogs` — with these
+columns. The row `$id` is used as the URL segment (`/philosophy/:id`,
+`/projects/:id`, `/blogs/:id`), so give rows readable custom IDs.
+
+**`books`**
+
+| Column | Type | Required |
+| --- | --- | --- |
+| `bookName` | String | yes |
+| `authorName` | String | yes |
+| `description` | String (long) | yes |
+| `image` | String (URL) | yes |
+| `note` | String | no |
+
+**`projects`**
+
+| Column | Type | Required |
+| --- | --- | --- |
+| `projectName` | String | yes |
+| `description` | String (long) | yes |
+| `image` | String (URL) | yes |
+| `tags` | String, **array** | no |
+| `links` | String (long) | no |
+
+`links` holds a JSON object as a string, e.g.
+`{"github":"https://github.com/...","demo":"https://..."}` — Appwrite has no map
+column type. Invalid JSON is logged and treated as "no links".
+
+**`blogs`**
+
+| Column | Type | Required |
+| --- | --- | --- |
+| `title` | String | yes |
+| `excerpt` | String (long) | yes |
+| `date` | String (ISO date, e.g. `2026-04-18`) | yes |
+| `image` | String (URL) | no |
+| `body` | String (long), **array** | no |
+
+`body` is one string per paragraph. The Writing page lists posts newest-first,
+which needs an index on `date` for the sort to work.
+
 ## Development server
 
 To start a local development server, run:

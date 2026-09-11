@@ -1,7 +1,6 @@
 import { Injectable, signal } from '@angular/core';
-import { collection, getDocs } from '@angular/fire/firestore';
-import { db } from '../firebase';
-import { USE_DUMMY_DATA, DUMMY_BLOGS } from './dummy-data';
+import { Query } from 'appwrite';
+import { tablesDB, APPWRITE_DATABASE_ID, TABLES } from '../appwrite';
 
 @Injectable({
   providedIn: 'root'
@@ -11,29 +10,26 @@ export class BlogData {
   private blogData = signal<IBlog[]>([]);
 
   constructor() {
-    if (USE_DUMMY_DATA) {
-      this.blogData.set(DUMMY_BLOGS);
-    } else {
-      this.fetchdb();
-    }
+    this.fetchdb();
   }
 
   async fetchdb(): Promise<void> {
-  try {
-    const blogsCol = collection(db, 'blogs');
-    const blogSnapshot = await getDocs(blogsCol);
-    const blogArray = blogSnapshot.docs.map(doc => {
-      const data = doc.data();
-      return {
-        id: doc.id,
-        title: data['title'],
-        excerpt: data['excerpt'],
-        date: data['date'],
-        image: data['image'],
-        body: data['body']
-      };
-    });
-    this.blogData.set(blogArray);
+    try {
+      const { rows } = await tablesDB.listRows({
+        databaseId: APPWRITE_DATABASE_ID,
+        tableId: TABLES.blogs,
+        // Newest first — the Writing page lists posts in reverse date order.
+        queries: [Query.orderDesc('date'), Query.limit(100)],
+      });
+      const blogArray = rows.map(row => ({
+        id: row.$id,
+        title: row['title'],
+        excerpt: row['excerpt'],
+        date: row['date'],
+        image: row['image'],
+        body: row['body']
+      }));
+      this.blogData.set(blogArray);
     } catch (error) {
       console.error('Error fetching blog data:', error);
     }
