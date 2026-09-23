@@ -1,25 +1,21 @@
-<div class="page book-detail">
+<div class="page detail-page">
 
-  @if (book) {
+  @if (book(); as book) {
     <article reveal>
-      <a class="back-link" routerLink="/philosophy">Back to reading</a>
+      <header class="detail-head">
+        <a class="back-link" routerLink="/philosophy">Back to reading</a>
+        <h1 class="page-title">{{ book.bookName }}</h1>
+        <p class="book-author">{{ book.authorName }}</p>
+      </header>
 
-      <div class="book-layout">
-        <figure class="book-figure">
-          <img [src]="book.image" [alt]="book.bookName">
-        </figure>
-
-        <div class="book-text">
-          <h1 class="page-title">{{ book.bookName }}</h1>
-          <p class="book-author">{{ book.authorName }}</p>
-          <div class="prose book-body">
-            <p>{{ book.description }}</p>
-          </div>
-        </div>
+      <div class="prose detail-body">
+        @for (para of paragraphs(); track $index) {
+          <p>@for (seg of para; track $index) {@if (seg.em) {<em>{{ seg.text }}</em>} @else {{{ seg.text }}}}</p>
+        }
       </div>
     </article>
-  } @else {
-    <div class="page-head">
+  } @else if (loaded()) {
+    <div class="page-head detail-missing">
       <h1 class="page-title">Not found.</h1>
       <p class="page-lede">That book is not on the shelf.</p>
     </div>

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { BookData, IBook } from '../book-data';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Reveal } from '../reveal';
+import { parseParagraphs, Segment } from '../rich-text';
 
 @Component({
   selector: 'app-book-card',
@@ -10,14 +11,16 @@ import { Reveal } from '../reveal';
   styleUrl: './book-card.css'
 })
 export class BookCard {
-  book: IBook | undefined;
+  private readonly id: string;
 
-  constructor(private bookData: BookData, private route: ActivatedRoute) {}
+  // Computed from the data signal, so a direct load or refresh (data still in
+  // flight) fills in once the fetch lands instead of showing "Not found".
+  readonly book = computed<IBook | undefined>(() => this.bookData.getBookById(this.id));
+  readonly paragraphs = computed<Segment[][]>(() => parseParagraphs(this.book()?.description));
+  readonly loaded;
 
-  ngOnInit() {
-    const routeParam = this.route.snapshot.paramMap.get('id') ?? '';
-    if (routeParam) {
-      this.book = this.bookData.getBookById(routeParam);
-    }
+  constructor(private bookData: BookData, route: ActivatedRoute) {
+    this.id = route.snapshot.paramMap.get('id') ?? '';
+    this.loaded = bookData.loaded;
   }
 }

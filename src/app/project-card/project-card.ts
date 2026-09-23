@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { IProject,ProjectData } from '../project-data';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Reveal } from '../reveal';
+import { parseParagraphs, Segment } from '../rich-text';
 
 @Component({
   selector: 'app-project-card',
@@ -10,14 +11,18 @@ import { Reveal } from '../reveal';
   styleUrl: './project-card.css'
 })
 export class ProjectCard {
-   project : IProject|undefined;
-   constructor(private projectData:ProjectData, private router:ActivatedRoute,){}
+  private readonly id: string;
 
-   ngOnInit(){
-    const routeParam = this.router.snapshot.paramMap.get('id')??'0';
-    if (routeParam) {
-      this.project = this.projectData.getProjectById(routeParam);
-   }}
+  // Computed from the data signal, so a direct load or refresh (data still in
+  // flight) fills in once the fetch lands instead of showing "Not found".
+  readonly project = computed<IProject | undefined>(() => this.projectData.getProjectById(this.id));
+  readonly paragraphs = computed<Segment[][]>(() => parseParagraphs(this.project()?.description));
+  readonly loaded;
+
+  constructor(private projectData: ProjectData, route: ActivatedRoute) {
+    this.id = route.snapshot.paramMap.get('id') ?? '';
+    this.loaded = projectData.loaded;
+  }
 
   getProjectLinks(links: { [key: string]: string } | undefined): {name: string, url: string}[] {
     if (!links) return [];

@@ -8,6 +8,9 @@ import { tablesDB, APPWRITE_DATABASE_ID, TABLES } from '../appwrite';
 export class BookData {
 
   private bookData = signal<IBook[]>([]);
+  /** True once the fetch has settled (success or failure). Until then an
+      empty list or missing id means "not loaded yet", not "doesn't exist". */
+  readonly loaded = signal(false);
 
   constructor() {
     this.fetchdb();
@@ -31,6 +34,8 @@ export class BookData {
       this.bookData.set(bookArray);
     } catch (error) {
       console.error('Error fetching book data:', error);
+    } finally {
+      this.loaded.set(true);
     }
   }
 

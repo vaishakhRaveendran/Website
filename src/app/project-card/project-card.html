@@ -1,8 +1,8 @@
-<div class="page project-detail">
+<div class="page detail-page">
 
-  @if (project) {
+  @if (project(); as project) {
     <article reveal>
-      <header class="page-head">
+      <header class="detail-head">
         <a class="back-link" routerLink="/projects">Back to projects</a>
         <h1 class="page-title">{{ project.projectName }}</h1>
         @if (project.tags && project.tags.length) {
@@ -14,14 +14,10 @@
         }
       </header>
 
-      @if (project.image) {
-        <figure class="detail-figure">
-          <img [src]="project.image" [alt]="project.projectName">
-        </figure>
-      }
-
       <div class="prose detail-body">
-        <p>{{ project.description }}</p>
+        @for (para of paragraphs(); track $index) {
+          <p>@for (seg of para; track $index) {@if (seg.em) {<em>{{ seg.text }}</em>} @else {{{ seg.text }}}}</p>
+        }
       </div>
 
       @if (getProjectLinks(project.links).length) {
@@ -33,8 +29,8 @@
         </div>
       }
     </article>
-  } @else {
-    <div class="page-head">
+  } @else if (loaded()) {
+    <div class="page-head detail-missing">
       <h1 class="page-title">Not found.</h1>
       <p class="page-lede">That project does not exist, or has not been written up yet.</p>
     </div>

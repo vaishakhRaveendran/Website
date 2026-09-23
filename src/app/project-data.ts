@@ -8,6 +8,9 @@ import { tablesDB, APPWRITE_DATABASE_ID, TABLES } from '../appwrite';
 export class ProjectData{
 
   private projectData = signal<IProject[]>([]);
+  /** True once the fetch has settled (success or failure). Until then an
+      empty list or missing id means "not loaded yet", not "doesn't exist". */
+  readonly loaded = signal(false);
 
   constructor() {
     this.fetchdb();
@@ -31,6 +34,8 @@ export class ProjectData{
       this.projectData.set(projectArray);
     } catch (error) {
       console.error('Error fetching project data:', error);
+    } finally {
+      this.loaded.set(true);
     }
   }
 

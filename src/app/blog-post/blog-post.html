@@ -1,32 +1,21 @@
-<div class="page post">
+<div class="page detail-page">
 
-  @if (blog) {
+  @if (blog(); as blog) {
     <article reveal>
-      <a class="back-link" routerLink="/writing">Back to writing</a>
-
-      <header class="post-head">
+      <header class="detail-head">
+        <a class="back-link" routerLink="/writing">Back to writing</a>
         <time class="post-date" [attr.datetime]="blog.date">{{ blog.date | date:'d MMMM y' }}</time>
         <h1 class="page-title">{{ blog.title }}</h1>
       </header>
 
-      @if (blog.image) {
-        <figure class="post-figure">
-          <img [src]="blog.image" [alt]="blog.title">
-        </figure>
-      }
-
-      <div class="prose post-body">
-        @if (blog.body && blog.body.length) {
-          @for (paragraph of blog.body; track $index) {
-            <p>{{ paragraph }}</p>
-          }
-        } @else {
-          <p>{{ blog.excerpt }}</p>
+      <div class="prose detail-body">
+        @for (para of paragraphs(); track $index) {
+          <p>@for (seg of para; track $index) {@if (seg.em) {<em>{{ seg.text }}</em>} @else {{{ seg.text }}}}</p>
         }
       </div>
     </article>
-  } @else {
-    <div class="page-head">
+  } @else if (loaded()) {
+    <div class="page-head detail-missing">
       <h1 class="page-title">Not found.</h1>
       <p class="page-lede">That post does not exist, or has not been written yet.</p>
     </div>
