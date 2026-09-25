@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" role="img" aria-label="Player composed with Stick: ten reachable states, player 1 states on top, player 2 states below, with moves crossing between the rows">
+  <style>
+    .st { fill: #ffffff; stroke: #101010; stroke-width: 1.5 }
+    .bad { stroke-dasharray: 4 3 }
+    .in { fill: none; stroke: #101010; stroke-width: 1 }
+    .e { fill: none; stroke: #101010; stroke-width: 1.3 }
+    .u { stroke-dasharray: 5 4 }
+    .ah { fill: #101010 }
+    .t { font: 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #101010; text-anchor: middle; dominant-baseline: central }
+    .l { font: 12px ui-monospace, Consolas, monospace; fill: #4a4a4a; text-anchor: middle; dominant-baseline: central; paint-order: stroke; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round }
+    .n { font: 12px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #6b6b6b; text-anchor: middle }
+    .lg { text-anchor: start }
+    @media (prefers-color-scheme: dark) {
+      .st { fill: #151515; stroke: #ededed } .in, .e { stroke: #ededed } .ah { fill: #ededed }
+      .t { fill: #ededed } .l { fill: #b5b5b5; stroke: #151515 } .n { fill: #9a9a9a }
+    }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="ah" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+
+  <line class="e" x1="2" y1="60" x2="26" y2="60" marker-end="url(#a)"/>
+
+  <!-- player 1 moves (controllable): top row → bottom row -->
+  <line class="e" x1="70" y1="77" x2="200" y2="183" marker-end="url(#a)"/>
+  <line class="e" x1="70" y1="77" x2="330" y2="183" marker-end="url(#a)"/>
+  <line class="e" x1="330" y1="77" x2="460" y2="183" marker-end="url(#a)"/>
+  <line class="e" x1="330" y1="77" x2="590" y2="183" marker-end="url(#a)"/>
+  <line class="e" x1="460" y1="77" x2="590" y2="183" marker-end="url(#a)"/>
+  <line class="e" x1="460" y1="77" x2="720" y2="183" marker-end="url(#a)"/>
+  <line class="e" x1="590" y1="77" x2="720" y2="183" marker-end="url(#a)"/>
+
+  <!-- player 2 moves (uncontrollable): bottom row → top row -->
+  <line class="e u" x1="200" y1="183" x2="330" y2="77" marker-end="url(#a)"/>
+  <line class="e u" x1="200" y1="183" x2="460" y2="77" marker-end="url(#a)"/>
+  <line class="e u" x1="330" y1="183" x2="460" y2="77" marker-end="url(#a)"/>
+  <line class="e u" x1="330" y1="183" x2="590" y2="77" marker-end="url(#a)"/>
+  <line class="e u" x1="460" y1="183" x2="590" y2="77" marker-end="url(#a)"/>
+  <line class="e u" x1="460" y1="183" x2="720" y2="77" marker-end="url(#a)"/>
+  <line class="e u" x1="590" y1="183" x2="720" y2="77" marker-end="url(#a)"/>
+
+  <!-- sticks removed by each move -->
+  <text class="l" x="114" y="107">1</text>
+  <text class="l" x="151" y="107">2</text>
+  <text class="l" x="374" y="107">1</text>
+  <text class="l" x="411" y="107">2</text>
+  <text class="l" x="504" y="107">1</text>
+  <text class="l" x="541" y="107">2</text>
+  <text class="l" x="634" y="107">1</text>
+  <text class="l" x="244" y="153">1</text>
+  <text class="l" x="281" y="153">2</text>
+  <text class="l" x="374" y="153">1</text>
+  <text class="l" x="411" y="153">2</text>
+  <text class="l" x="504" y="153">1</text>
+  <text class="l" x="541" y="153">2</text>
+  <text class="l" x="634" y="153">1</text>
+
+  <!-- player 1 to move -->
+  <rect class="st" x="28" y="43" width="84" height="34" rx="6"/>
+  <rect class="st" x="288" y="43" width="84" height="34" rx="6"/>
+  <rect class="st" x="418" y="43" width="84" height="34" rx="6"/>
+  <rect class="st" x="548" y="43" width="84" height="34" rx="6"/>
+  <rect class="st bad" x="678" y="43" width="84" height="34" rx="6"/>
+  <text class="t" x="70" y="60">P1, 5</text>
+  <text class="t" x="330" y="60">P1, 3</text>
+  <text class="t" x="460" y="60">P1, 2</text>
+  <text class="t" x="590" y="60">P1, 1</text>
+  <text class="t" x="720" y="60">P1, 0</text>
+  <text class="n" x="690" y="30">forbidden: P2 took the last stick</text>
+
+  <!-- player 2 to move -->
+  <rect class="st" x="158" y="183" width="84" height="34" rx="6"/>
+  <rect class="st" x="288" y="183" width="84" height="34" rx="6"/>
+  <rect class="st" x="418" y="183" width="84" height="34" rx="6"/>
+  <rect class="st" x="548" y="183" width="84" height="34" rx="6"/>
+  <rect class="st" x="678" y="183" width="84" height="34" rx="6"/>
+  <rect class="in" x="681.5" y="186.5" width="77" height="27" rx="4"/>
+  <text class="t" x="200" y="200">P2, 4</text>
+  <text class="t" x="330" y="200">P2, 3</text>
+  <text class="t" x="460" y="200">P2, 2</text>
+  <text class="t" x="590" y="200">P2, 1</text>
+  <text class="t" x="720" y="200">P2, 0</text>
+  <text class="n" x="690" y="238">marked: P1 took the last stick</text>
+
+  <!-- legend -->
+  <line class="e" x1="150" y1="276" x2="190" y2="276"/>
+  <text class="n lg" x="198" y="280">player 1 move (controllable)</text>
+  <line class="e u" x1="420" y1="276" x2="460" y2="276"/>
+  <text class="n lg" x="468" y="280">player 2 move (uncontrollable)</text>
+</svg>

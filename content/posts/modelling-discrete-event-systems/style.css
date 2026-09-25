@@ -1,0 +1,29 @@
+/* Only loaded on /posts/modelling-discrete-event-systems. */
+
+/* Numbered sections, like chapters of a report. */
+.post[data-post="modelling-discrete-event-systems"] .post-body {
+  counter-reset: section;
+}
+
+.post[data-post="modelling-discrete-event-systems"] .post-body h2 {
+  counter-increment: section;
+}
+
+.post[data-post="modelling-discrete-event-systems"] .post-body h2::before {
+  content: counter(section, decimal-leading-zero);
+  display: block;
+  margin-bottom: var(--space-1);
+  font-family: var(--font-sans);
+  font-size: var(--step--2);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+}
+
+/* Event names read as tokens, not prose. */
+.post[data-post="modelling-discrete-event-systems"] .post-body :not(pre) > code {
+  padding: 0.05em 0.45em;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: none;
+}

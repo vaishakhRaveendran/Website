@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="Contour lines of a narrow valley with a zig-zag descent path">
+  <style>
+    .ring { stroke: #cbcbcb; stroke-width: 1.5; fill: none }
+    .path { stroke: #101010; stroke-width: 2.5; fill: none; stroke-linejoin: round }
+    .dot { fill: #101010 }
+    text { fill: #4a4a4a; font: 14px system-ui, -apple-system, "Segoe UI", sans-serif }
+    @media (prefers-color-scheme: dark) {
+      .ring { stroke: #3f3f3f } .path { stroke: #ededed } .dot { fill: #ededed } text { fill: #b5b5b5 }
+    }
+  </style>
+  <g transform="rotate(-18 300 170)">
+    <ellipse class="ring" cx="300" cy="170" rx="250" ry="105"/>
+    <ellipse class="ring" cx="300" cy="170" rx="190" ry="80"/>
+    <ellipse class="ring" cx="300" cy="170" rx="130" ry="55"/>
+    <ellipse class="ring" cx="300" cy="170" rx="70" ry="30"/>
+    <polyline class="path" points="70,150 120,235 165,115 205,220 240,135 265,200 283,155 295,180 300,170"/>
+    <circle class="dot" cx="70" cy="150" r="6"/>
+    <circle class="dot" cx="300" cy="170" r="4"/>
+  </g>
+  <text x="52" y="252">start</text>
+  <text x="312" y="192">minimum</text>
+</svg>

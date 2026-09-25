@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" role="img" aria-label="Application A1 as a DAG: T1 (1 tick) leads to T2 (2 ticks) and T3 (3 ticks), which both lead to T4 (2 ticks)">
+  <style>
+    .st { fill: #ffffff; stroke: #101010; stroke-width: 1.5 }
+    .e { fill: none; stroke: #101010; stroke-width: 1.4 }
+    .ah { fill: #101010 }
+    .t { font: 15px system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 600; fill: #101010; text-anchor: middle }
+    .s { font: 12px ui-monospace, Consolas, monospace; fill: #4a4a4a; text-anchor: middle }
+    @media (prefers-color-scheme: dark) {
+      .st { fill: #151515; stroke: #ededed } .e { stroke: #ededed } .ah { fill: #ededed }
+      .t { fill: #ededed } .s { fill: #b5b5b5 }
+    }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="ah" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+
+  <line class="e" x1="146" y1="88" x2="260" y2="58" marker-end="url(#a)"/>
+  <line class="e" x1="146" y1="112" x2="260" y2="142" marker-end="url(#a)"/>
+  <line class="e" x1="380" y1="58" x2="494" y2="88" marker-end="url(#a)"/>
+  <line class="e" x1="380" y1="142" x2="494" y2="112" marker-end="url(#a)"/>
+
+  <ellipse class="st" cx="90" cy="100" rx="60" ry="28"/>
+  <ellipse class="st" cx="320" cy="48" rx="60" ry="28"/>
+  <ellipse class="st" cx="320" cy="152" rx="60" ry="28"/>
+  <ellipse class="st" cx="550" cy="100" rx="60" ry="28"/>
+  <text class="t" x="90" y="97">T1</text><text class="s" x="90" y="114">exec 1</text>
+  <text class="t" x="320" y="45">T2</text><text class="s" x="320" y="62">exec 2</text>
+  <text class="t" x="320" y="149">T3</text><text class="s" x="320" y="166">exec 3</text>
+  <text class="t" x="550" y="97">T4</text><text class="s" x="550" y="114">exec 2</text>
+</svg>

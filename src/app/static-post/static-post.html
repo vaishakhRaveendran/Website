@@ -1,0 +1,21 @@
+<div class="page detail-page">
+
+  @if (post(); as post) {
+    <article class="post" [attr.data-post]="slug" reveal>
+      <header class="detail-head">
+        <a class="back-link" routerLink="/writing">Back to writing</a>
+        <time class="post-date" [attr.datetime]="post.date">{{ post.date | date:'d MMMM y' }}</time>
+        <h1 class="page-title">{{ post.title }}</h1>
+      </header>
+
+      <div class="prose detail-body post-body" [innerHTML]="html()"></div>
+    </article>
+  } @else if (loaded()) {
+    <div class="page-head detail-missing">
+      <h1 class="page-title">Not found.</h1>
+      <p class="page-lede">That post does not exist, or has not been written yet.</p>
+    </div>
+    <a class="btn" routerLink="/writing">Back to writing</a>
+  }
+
+</div>

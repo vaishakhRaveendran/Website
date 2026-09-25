@@ -4,7 +4,7 @@ import { Projects } from './projects/projects';
 import { ProjectCard } from './project-card/project-card';
 import { Philosophy } from './philosophy/philosophy';
 import { BookCard } from './book-card/book-card';
-import { BlogPost } from './blog-post/blog-post';
+import { StaticPost } from './static-post/static-post';
 import { Writing } from './writing/writing';
 import { Home } from './home/home';
 
@@ -45,9 +45,9 @@ export const routes: Routes = [
         component: BookCard,
     },
     {
-        path:'blogs/:id',
+        path:'posts/:slug',
         title:'Blog',
-        component: BlogPost,
+        component: StaticPost,
     },
     {
         path:'**',

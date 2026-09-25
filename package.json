@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "posts": "node scripts/build-posts.mjs",
+    "posts:watch": "node --watch-path=content scripts/build-posts.mjs",
+    "prestart": "npm run posts",
     "start": "ng serve",
+    "prebuild": "npm run posts",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -26,12 +30,18 @@
     "@angular/cli": "^20.0.2",
     "@angular/compiler-cli": "^20.0.0",
     "@types/jasmine": "~5.1.0",
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.12.0",
     "jasmine-core": "~5.7.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "katex": "^0.18.9",
+    "marked": "^18.0.14",
+    "marked-highlight": "^2.2.4",
+    "marked-katex-extension": "^5.1.13",
     "typescript": "~5.8.2"
   }
 }

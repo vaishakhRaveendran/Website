@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" role="img" aria-label="Gradient descent steps on a parabola">
+  <style>
+    .ax { stroke: #cbcbcb; stroke-width: 1 }
+    .curve { stroke: #101010; stroke-width: 2.5; fill: none }
+    .step { stroke: #6b6b6b; stroke-width: 1.5; stroke-dasharray: 4 4; fill: none }
+    .dot { fill: #101010 }
+    text { fill: #4a4a4a; font: 14px system-ui, -apple-system, "Segoe UI", sans-serif }
+    @media (prefers-color-scheme: dark) {
+      .ax { stroke: #3a3a3a } .curve { stroke: #ededed } .step { stroke: #9a9a9a }
+      .dot { fill: #ededed } text { fill: #b5b5b5 }
+    }
+  </style>
+  <line class="ax" x1="40" y1="280" x2="560" y2="280"/>
+  <line class="ax" x1="300" y1="30" x2="300" y2="290"/>
+  <path class="curve" d="M60 40 Q300 520 540 40"/>
+  <polyline class="step" points="92,99.7 175.2,215.1 225.1,256.6 255.1,271.6 273,277 283.8,278.9"/>
+  <circle class="dot" cx="92" cy="99.7" r="6"/>
+  <circle class="dot" cx="175.2" cy="215.1" r="5"/>
+  <circle class="dot" cx="225.1" cy="256.6" r="4.5"/>
+  <circle class="dot" cx="255.1" cy="271.6" r="4"/>
+  <circle class="dot" cx="273" cy="277" r="3.5"/>
+  <circle class="dot" cx="283.8" cy="278.9" r="3"/>
+  <text x="104" y="92">start</text>
+  <text x="308" y="304">minimum</text>
+  <text x="440" y="100">f(x) = x²</text>
+</svg>

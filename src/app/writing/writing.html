@@ -8,14 +8,14 @@
     </p>
   </header>
 
-  @if (BlogsArray().length) {
+  @if (posts().length) {
     <div class="entry-list" reveal>
-      @for (blog of BlogsArray(); track blog.id) {
-        <a class="entry-row has-lead" [routerLink]="['/blogs', blog.id]">
-          <time class="entry-lead" [attr.datetime]="blog.date">{{ blog.date | date:'d MMM y' }}</time>
+      @for (post of posts(); track post.slug) {
+        <a class="entry-row has-lead" [routerLink]="['/posts', post.slug]">
+          <time class="entry-lead" [attr.datetime]="post.date">{{ post.date | date:'d MMM y' }}</time>
           <span class="entry-body">
-            <span class="entry-title">{{ blog.title }}</span>
-            <span class="entry-note">{{ blog.excerpt }}</span>
+            <span class="entry-title">{{ post.title }}</span>
+            <span class="entry-note">{{ post.excerpt }}</span>
           </span>
         </a>
       }

@@ -1,0 +1,39 @@
+/* Only loaded on /posts/gradient-descent. Everything is scoped to this post,
+   so nothing here leaks onto other pages. */
+
+.post[data-post="gradient-descent"] .page-title {
+  font-size: var(--step-4);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* Drop cap on the opening paragraph. */
+.post[data-post="gradient-descent"] .post-body > p:first-child::first-letter {
+  float: left;
+  margin: 0.08em 0.12em 0 0;
+  font-size: 3.4em;
+  line-height: 0.8;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* Display equations get a rule down the left, like a margin note. */
+.post[data-post="gradient-descent"] .katex-display {
+  padding-left: var(--space-5);
+  border-left: 2px solid var(--rule-strong);
+  text-align: left;
+}
+
+.post[data-post="gradient-descent"] .katex-display > .katex {
+  text-align: left;
+}
+
+/* Section headings in small caps sans. */
+.post[data-post="gradient-descent"] .post-body h2 {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
